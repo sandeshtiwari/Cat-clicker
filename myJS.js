@@ -30,6 +30,9 @@ var octopus = {
     },
     getCats: function(){
         return model.cat;
+    },
+    updateCount: function(cat, number){
+        cat.countClick = number;
     }
 };
 var catList = {
@@ -37,5 +40,19 @@ var catList = {
         this.catList = document.getElementById("catList");
         catList.render();
     },
-    
+    render: function(){
+        var list = octopus.getCats();
+        for(int i = 0; i < list.length; i++)
+            {
+                var cat = list[i];
+                var elem = document.createElement('li');
+                elem.textContent = cat.name;
+                elem.addEventListener('click', function(cat){
+                    return function(){
+                        octopus.setCurrentCat(cat);
+                        catView.render();
+                    }
+                }(cat));
+            }
+    }
 };
