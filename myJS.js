@@ -53,6 +53,23 @@ var catList = {
                         catView.render();
                     }
                 }(cat));
+                catList.appendChild(elem);
             }
     }
+};
+var catView = {
+    init: function(){
+        this.displayClick = document.getElementById('clicks');
+        this.displayName = document.getElementById('name');
+        this.image = document.getElementById('myCat');
+        catView.render();
+    },
+    
+    render: function(){
+        var presentCat = octopus.getCurrentCat();
+        this.displayName.textContent = presentCat.name;
+        this.displayClick.textContent = presentCat.countClick;
+        this.image.src = presentCat.source;
+    }
+    
 };
