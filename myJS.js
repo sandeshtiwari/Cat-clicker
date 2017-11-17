@@ -27,5 +27,15 @@ var octopus = {
     setCurrentCat :function(cat){
         model.currentCat = cat.name;
         catView.render(cat);
+    },
+    getCats: function(){
+        return model.cat;
     }
+};
+var catList = {
+    init: function(){
+        this.catList = document.getElementById("catList");
+        catList.render();
+    },
+    
 };
