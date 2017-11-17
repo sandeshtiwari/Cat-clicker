@@ -13,3 +13,19 @@ var model = {
         }
     ]
 };
+
+var octopus = {
+    init: function(){
+        model.currentCat = model.cat[0];
+        catList.init();
+        catView.inti();
+    },
+    
+    getCurrentCat: function(){
+        return model.currentCat;
+    },
+    setCurrentCat :function(cat){
+        model.currentCat = cat.name;
+        catView.render(cat);
+    }
+};
