@@ -73,3 +73,4 @@ var catView = {
     }
     
 };
+octopus.init();
