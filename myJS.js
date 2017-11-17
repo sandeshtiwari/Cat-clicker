@@ -31,8 +31,9 @@ var octopus = {
     getCats: function(){
         return model.cat;
     },
-    updateCount: function(cat, number){
-        cat.countClick = number;
+    updateCount: function(){
+        model.currentCat.countClick++;
+        catView.render();
     }
 };
 var catList = {
@@ -47,9 +48,9 @@ var catList = {
                 var cat = list[i];
                 var elem = document.createElement('li');
                 elem.textContent = cat.name;
-                elem.addEventListener('click', function(cat){
+                elem.addEventListener('click', function(catCopy){
                     return function(){
-                        octopus.setCurrentCat(cat);
+                        octopus.setCurrentCat(catCopy);
                         catView.render();
                     }
                 }(cat));
@@ -62,6 +63,9 @@ var catView = {
         this.displayClick = document.getElementById('clicks');
         this.displayName = document.getElementById('name');
         this.image = document.getElementById('myCat');
+        this.image.addEventListener('click', function(){
+            octopus.updateCount();
+        });
         catView.render();
     },
     
