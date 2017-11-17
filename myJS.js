@@ -18,7 +18,7 @@ var octopus = {
     init: function(){
         model.currentCat = model.cat[0];
         catList.init();
-        catView.inti();
+        catView.init();
     },
     
     getCurrentCat: function(){
@@ -37,12 +37,12 @@ var octopus = {
 };
 var catList = {
     init: function(){
-        this.catList = document.getElementById("catList");
+        this.catListElem = document.getElementById("catList");
         catList.render();
     },
     render: function(){
         var list = octopus.getCats();
-        for(int i = 0; i < list.length; i++)
+        for(var i = 0; i < list.length; i++)
             {
                 var cat = list[i];
                 var elem = document.createElement('li');
@@ -53,7 +53,7 @@ var catList = {
                         catView.render();
                     }
                 }(cat));
-                catList.appendChild(elem);
+                this.catListElem.appendChild(elem);
             }
     }
 };
