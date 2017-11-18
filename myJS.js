@@ -136,6 +136,7 @@ function update(){
     octopus.setName(this.newName.value);
     octopus.setUrl(this.newUrl.value);
     octopus.setClicks(this.newClicks.value);
+    hide();
     catView.render();
 }
 function display(){
