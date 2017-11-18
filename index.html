@@ -11,7 +11,7 @@
 		<div id = 'clicks'></div>
 		<img id = 'myCat' src="">
 	</div>
-	<button id= 'Admin' onclick='display()'>Admin</button>
+	<button id= 'Admin' onclick='admin.display()'>Admin</button>
 	<div id = 'edit'>
 		<label>Name:</label>
 		<input type='text' id = 'changeName'>
@@ -22,9 +22,9 @@
 		<label>Clicks</label>
 		<input type = 'text' id = 'changeClicks'>
 		<br>
-		<input id='save' type='submit' onclick='update()' value='Save'>
+		<input id='save' type='submit' onclick='admin.update()' value='Save'>
 		<br>
-		<button id = 'cancel' onclick='hide()'>Cancel</button>
+		<button id = 'cancel' onclick='admin.hide()'>Cancel</button>
 	</div>
 	<script src='myJS.js'></script>
 </body>

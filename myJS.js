@@ -127,26 +127,21 @@ var admin = {
             console.log('block');
         }
         
+    },
+    update: function(){
+        octopus.setName(this.newName.value);
+        octopus.setUrl(this.newUrl.value);
+        octopus.setClicks(this.newClicks.value);
+        admin.hide();
+        catView.render();
+    },
+    hide: function(){
+        this.form.style.display = 'none';
+        octopus.showHide();
+    },
+    display: function(){
+        this.form.style.display = 'block';
+        octopus.showHide();
     }
 };
-function update(){
-    this.newName = document.getElementById('changeName');
-    this.newUrl = document.getElementById('url');
-    this.newClicks = document.getElementById('changeClicks');
-    octopus.setName(this.newName.value);
-    octopus.setUrl(this.newUrl.value);
-    octopus.setClicks(this.newClicks.value);
-    hide();
-    catView.render();
-}
-function display(){
-    this.form = document.getElementById('edit');
-    this.form.display = 'block';
-    octopus.showHide();
-}
-function hide(){
-    this.form = document.getElementById('edit');
-    this.form.display = 'none';
-    octopus.showHide();
-}
 octopus.init();
