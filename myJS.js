@@ -1,5 +1,6 @@
 var model = {
     currentCat : null,
+    showAdmin : false,
     cat : [
         {
             name : 'Hehe',
@@ -19,6 +20,7 @@ var octopus = {
         model.currentCat = model.cat[0];
         catList.init();
         catView.init();
+        admin.init();
     },
     
     getCurrentCat: function(){
@@ -34,6 +36,30 @@ var octopus = {
     updateCount: function(){
         model.currentCat.countClick++;
         catView.render();
+    },
+    isHidden: function(){
+        return model.showAdmin;
+    },
+    showHide: function(){
+        if(octopus.isHidden() == false)
+            {
+                model.showAdmin = true;
+            }
+        else
+            {
+                model.showAdmin = false;
+            }
+        admin.render();
+    },
+    setName: function(newName){
+        model.currentCat.name = newName;
+        catList.render();
+    },
+    setUrl: function(newUrl){
+        model.currentCat.source = newUrl;
+    },
+    setClicks: function(newClicks){
+        model.currentCat.countClick = newClicks;
     }
 };
 var catList = {
@@ -78,4 +104,48 @@ var catView = {
     }
     
 };
+var admin = {
+    init: function(){
+        this.form = document.getElementById('edit');
+        this.newName = document.getElementById('changeName');
+        this.newUrl = document.getElementById('url');
+        this.newClicks = document.getElementById('changeClicks');
+        this.save = document.getElementById('save');
+        this.cancel = document.getElementById('cancel');
+        this.adminButton = document.getElementById('Admin');
+        admin.render();
+    },
+    render: function(){
+        if(!octopus.isHidden())
+            {
+                this.form.style.display = 'none';
+                console.log('none');
+            }
+        else
+        {
+            this.form.style.display = 'block';
+            console.log('block');
+        }
+        
+    }
+};
+function update(){
+    this.newName = document.getElementById('changeName');
+    this.newUrl = document.getElementById('url');
+    this.newClicks = document.getElementById('changeClicks');
+    octopus.setName(this.newName.value);
+    octopus.setUrl(this.newUrl.value);
+    octopus.setClicks(this.newClicks.value);
+    catView.render();
+}
+function display(){
+    this.form = document.getElementById('edit');
+    this.form.display = 'block';
+    octopus.showHide();
+}
+function hide(){
+    this.form = document.getElementById('edit');
+    this.form.display = 'none';
+    octopus.showHide();
+}
 octopus.init();
