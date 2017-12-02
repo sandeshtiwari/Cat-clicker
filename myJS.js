@@ -1,3 +1,4 @@
+//model or the data for the 
 var model = {
     currentCat : null,
     showAdmin : false,
@@ -14,7 +15,7 @@ var model = {
         }
     ]
 };
-
+//octopus or the connector for the views and the data
 var octopus = {
     init: function(){
         model.currentCat = model.cat[0];
